@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--for options menu-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/textViewOptions"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:text="&#8942;"-->
+<!--            android:paddingLeft="32dp"-->
+<!--            android:textAppearance="?android:textAppearanceLarge"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:paddingStart="32dp"-->
+<!--            tools:ignore="RtlSymmetry" />-->
+
+
+        <TextView
+            android:textColor="@color/purple_200"
+            android:textSize="20dp"
+            android:text="fname"
+            android:id="@+id/fnametxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/purple_200"
+            android:textSize="20dp"
+            android:text="lname"
+            android:layout_marginLeft="40dp"
+            android:layout_toRightOf="@id/fnametxt"
+            android:id="@+id/lnametxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/purple_200"
+            android:textSize="20dp"
+            android:layout_below="@id/fnametxt"
+            android:text="gender"
+            android:id="@+id/gendertxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@color/purple_200"
+            android:textSize="20dp"
+            android:layout_below="@id/fnametxt"
+            android:layout_toRightOf="@id/gendertxt"
+            android:text="phone"
+            android:id="@+id/phonetxt"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="30dp"
+            android:layout_height="24dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="-9dp"
+            android:layout_marginRight="-9dp"
+            android:layout_toRightOf="@id/lnametxt"
+            android:src="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="48dp"
+            android:layout_height="24dp"
+            android:layout_below="@id/delete"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_toRightOf="@id/phonetxt"
+            android:src="@drawable/edit" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
