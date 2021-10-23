@@ -1,18 +1,13 @@
 package com.example.crud;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,7 +60,14 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.ViewHolder
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(context,"Deleted successfully",Toast.LENGTH_SHORT).show();
+                                    if(task.isSuccessful())
+                                    {
+                                        Toast.makeText(context,"Deleted successfully",Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(context,"Failed to delete",Toast.LENGTH_SHORT).show();
+                                    }
                                     }
                             });
                 }
@@ -80,28 +82,14 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.ViewHolder
                        DialogPlus dialogPlus=DialogPlus.newDialog(context)
                                .setGravity(Gravity.CENTER)
                                .setMargin(50,0,50,0)
-                               .setContentHolder(new com.orhanobut.dialogplus.ViewHolder(R.layout.edit))
+                               .setContentHolder(new com.orhanobut.dialogplus.ViewHolder(R.layout.edit_layout))
                                .setExpanded(true)
                                .create();
                        View holderview=dialogPlus.getHolderView();
-                       EditText fname,lname,phone;
-                       Button save,view;
-                       RadioGroup gender;
+                       EditText fname,lname;
 
-                       fname=holderview.findViewById(R.id.fname);
-                       lname=holderview.findViewById(R.id.lname);
-                       phone=holderview.findViewById(R.id.mobile);
-                       gender=holderview.findViewById(R.id.gender);
-                       RadioButton male=holderview.findViewById(R.id.male);
-                       RadioButton female=holderview.findViewById(R.id.female);
-
-
-                       //fetch
-                       Members members=new Members();
-                       fname.setText(members.getFirst_name());
-                       lname.setText(members.getLast_name());
-                       phone.setText(members.getPhone());
-                       gender.getCheckedRadioButtonId();
+                       fname=holderview.findViewById(R.id.firstname);
+                       lname=holderview.findViewById(R.id.lastname);
 
                        Button update=holderview.findViewById(R.id.update);
                        update.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +105,18 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.ViewHolder
                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
                                            @Override
                                            public void onComplete(@NonNull Task<Void> task) {
-                                               dialogPlus.dismiss();
+                                               if(task.isSuccessful())
+                                               {
+                                                   fname.setText("");
+                                                   lname.setText("");
+                                                   dialogPlus.dismiss();
+                                                   Toast.makeText(context,"Update successful",Toast.LENGTH_SHORT).show();
+                                               }
+                                               else
+                                               {
+                                                   Toast.makeText(context,"Failed to update",Toast.LENGTH_SHORT).show();
+                                               }
+
 
                                            }
                                        });
@@ -195,8 +194,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.ViewHolder
                 txtphone=(TextView)itemView.findViewById(R.id.phonetxt);
 
                 //edit,delete
-                edit=itemView.findViewById(R.id.edit);
-                delete=itemView.findViewById(R.id.delete);
+                edit=(ImageView) itemView.findViewById(R.id.edit);
+                delete=(ImageView)itemView.findViewById(R.id.delete);
             }
         }
 }

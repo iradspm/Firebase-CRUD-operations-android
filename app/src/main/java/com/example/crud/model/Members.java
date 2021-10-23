@@ -12,11 +12,6 @@ public class Members {
         this.phone = phone;
         this.gender = gender;
     }
-    public Members(String first_name, String last_name, String phone) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.phone = phone;
-    }
 
     public String getGender() {
         return gender;
